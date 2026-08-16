@@ -22,11 +22,17 @@
 network-pharmacology/
 ├── SKILL.md                  # Hermes Agent skill (full workflow + 17 hard-won pitfalls)
 ├── README.md                 # This file
-├── scripts/                  # Ready-to-run pipeline scripts
-│   ├── step1_pubchem.py      #   batch PubChem name → SMILES
+├── scripts/                  # Ready-to-run pipeline scripts (full chain)
+│   ├── step1_structures.py   #   batch PubChem name → SMILES (comma-fix fallback)
 │   ├── step2_lipinski.py     #   RDKit Lipinski screening
-│   ├── step7_tcmsp.py        #   TCMSP OB/DL lookup
-│   ├── step8_go_targets.py   #   UniProt GO-term disease targets
+│   ├── step3_admet.py        #   ADMET-AI batch (absorption/metabolism/toxicity)
+│   ├── step4_restore_stp.py  #   parse STP full-100-target results
+│   ├── step5_disease_genes.py#   UniProt GO-term disease targets (configurable)
+│   ├── step6_intersect_report.py  # intersection + ranking + HTML report
+│   ├── step7_network_png.py  #   static network graph (matplotlib)
+│   ├── step8_lipids.py       #   manual lipid SMILES construction
+│   ├── step9_enrichment.py   #   g:Profiler GO/KEGG enrichment
+│   ├── step7_tcmsp.py        #   TCMSP OB/DL lookup (optional)
 │   └── uniprot_mapping.py    #   gene → canonical UniProt mapping
 ├── references/               # Deep-dive docs
 │   ├── pubchem-pug-api.md    #   PubChem REST API quirks
