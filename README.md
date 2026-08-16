@@ -10,6 +10,7 @@
 ## 🌟 Highlights
 
 - **Full pipeline automation**: metabolites CSV → SMILES (PubChem) → Lipinski (RDKit) → ADMET (ADMET-AI, local ML) → target prediction (SwissTargetPrediction, browser automation) → disease-target intersection → GO/KEGG enrichment (g:Profiler) → ranking + interactive network graph
+- **Any disease direction (可配置)**: antioxidant / anti-inflammatory / hypoglycemic / hepatoprotective / cardiovascular / neuroprotective — the disease-target stage accepts any keyword (GeneCards search + UniProt GO-term mapping per direction, see SKILL.md "Disease direction")
 - **Zero-gap screening**: handles comma-truncated names, lipid shorthand (Dgdg/Pe/Gpetn/Pa), PubChem misses with manual SMILES construction
 - **Proven at scale**: 138 LC-MS metabolites fully screened (see [Real-world case](#real-world-case))
 - **Self-contained HTML report**: ECharts force-directed network graph inlined (works offline, no CDN)
@@ -62,9 +63,9 @@ python scripts/step8_go_targets.py         # → antioxidant genes
 > Always expand to ALL 100 before downstream intersection — Top-15 capture undercounts
 > gene hubs by 2–4× (42 → 78 genes in our case).
 
-## 📊 Real-world case
+## 📊 Real-world case (antioxidant demo)
 
-**138 LC-MS metabolites (fermented grape product, 2026-08)**
+**138 LC-MS metabolites (fermented grape product, 2026-08)** — disease direction: **antioxidant** (replace with your own keyword)
 
 ```
 138 metabolites → 136 structures (98.6%) → 74 drug-like candidates
