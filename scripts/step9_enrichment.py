@@ -22,8 +22,8 @@ def main():
                           "sources": ["GO:BP", "KEGG"], "user_threshold": 0.05}).encode()
     req = urllib.request.Request("https://biit.cs.ut.ee/gprofiler/api/gost/profile/",
                                  data=payload, headers={"Content-Type": "application/json"})
-    proxy = urllib.request.ProxyHandler({"http": os.environ.get("HTTPS_PROXY", "http://127.0.0.1:7993"),
-                                          "https": os.environ.get("HTTPS_PROXY", "http://127.0.0.1:7993")})
+    proxy = urllib.request.ProxyHandler({"http": os.environ.get("HTTPS_PROXY", "http://<PROXY:PORT>"),
+                                          "https": os.environ.get("HTTPS_PROXY", "http://<PROXY:PORT>")})
     opener = urllib.request.build_opener(proxy)
     resp = opener.open(req, timeout=90)
     d = json.loads(resp.read().decode())

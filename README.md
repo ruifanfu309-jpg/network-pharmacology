@@ -26,14 +26,13 @@ network-pharmacology/
 │   ├── step1_structures.py   #   batch PubChem name → SMILES (comma-fix fallback)
 │   ├── step2_lipinski.py     #   RDKit Lipinski screening
 │   ├── step3_admet.py        #   ADMET-AI batch (absorption/metabolism/toxicity)
-│   ├── step4_restore_stp.py  #   parse STP full-100-target results
+│   ├── step4_stp_parse.py  #   parse STP full-100-target results (browser workspace)
 │   ├── step5_disease_genes.py#   UniProt GO-term disease targets (configurable)
 │   ├── step6_intersect_report.py  # intersection + ranking + HTML report
 │   ├── step7_network_png.py  #   static network graph (matplotlib)
 │   ├── step8_lipids.py       #   manual lipid SMILES construction
 │   ├── step9_enrichment.py   #   g:Profiler GO/KEGG enrichment
-│   ├── step7_tcmsp.py        #   TCMSP OB/DL lookup (optional)
-│   └── uniprot_mapping.py    #   gene → canonical UniProt mapping
+│   └── step2b_tcmsp.py       #   TCMSP OB/DL lookup (optional)
 ├── references/               # Deep-dive docs
 │   ├── pubchem-pug-api.md    #   PubChem REST API quirks
 │   ├── stp-browser-automation.md  # STP automation recipe (100-target capture!)
@@ -41,7 +40,7 @@ network-pharmacology/
 │   ├── antioxidant-targets.md      # curated antioxidant gene set
 │   └── beginner-tutorial.md        # 小白入门教程 (Chinese)
 └── templates/
-    └── echarts_network.html  # force-directed network graph template
+    └── report_template.html # full report template (network + tables)
 ```
 
 ## 💻 Installation
@@ -84,7 +83,7 @@ Only the `Metabolite` column is required. Keep `VAR`/`ID` if you have them.
 # 2. Run the pipeline (uv-managed venv, Python 3.11):
 
 # Step 1: structures
-python scripts/step1_pubchem.py            # → pubchem_smiles.json
+python scripts/step1_structures.py            # → pubchem_smiles.json
 # Step 2: drug-likeness
 python scripts/step2_lipinski.py           # → 类药性筛选结果.csv
 # Step 3: ADMET (ADMET-AI, local ML)
