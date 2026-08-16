@@ -123,6 +123,21 @@ self-contained interactive network graph.
 Built and validated on a real 138-metabolite fermented-food project (2026-08).
 See the Chinese sections above for the full workflow and case study.
 
+## 🆚 Comparison with existing tools (2026-08 survey)
+
+GitHub search for `network pharmacology`, `metabolomics screening`, `SwissTargetPrediction`, `virtual screening pipeline` found ~380 repos — but they fall into two buckets, neither of which is this project:
+
+| Category | Examples | What they do | What they lack |
+|---|---|---|---|
+| TCM-oriented platforms | HerbiV (56★), TCMNP (66★), TCM-Network-Pharmacology (30★), Hz-777 one-click platform (3★) | Network pharmacology for **traditional Chinese medicine** — input is TCMSP herbs | Input is TCM compounds, NOT LC-MS metabolites; no full-100-target STP capture; no ADMET; no ranking |
+| Partial pipelines | Target-Prediction-Crawler (24★), swiss_target_batch (5★), CADD kits (27★) | One stage only (STP batch, docking) | No end-to-end coverage |
+
+**This project's niche: metabolomics-driven screening.** Input = LC-MS metabolite lists
+(lipids, glycosides, rare metabolites — the hard cases), output = disease-direction-specific
+active-compound ranking with a full evidence chain (structure → drug-likeness → ADMET →
+100-target prediction → intersection → enrichment → ranking). No existing repo covers
+the whole chain for metabolomics inputs.
+
 **No prior art found on GitHub as of 2026-08** — existing repositories are
 disease-specific case analyses; this is the first generic, reusable automation
 covering the whole screening pipeline.
