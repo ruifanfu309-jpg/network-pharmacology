@@ -1,0 +1,10 @@
+# network-pharmacology - Python dependencies
+# Core pipeline (steps 1-2, lipid construction, ranking)
+rdkit>=2023.9,<2025
+pandas>=2.0,<3
+
+# ADMET stage (optional but recommended — local ML, ~1GB with torch)
+# admet-ai>=0.1.0
+
+# Browser automation for SwissTargetPrediction (optional — needed for full 100-target capture)
+# Install separately: uv tool install browser-use  (or pip install browser-use)

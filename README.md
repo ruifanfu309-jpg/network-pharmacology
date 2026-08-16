@@ -38,6 +38,39 @@ network-pharmacology/
     └── echarts_network.html  # force-directed network graph template
 ```
 
+## 💻 Installation
+
+```bash
+# 1. Python deps (RDKit, pandas — light)
+pip install -r requirements.txt
+
+# 2. As a Hermes Agent skill (optional — for AI-driven runs)
+#   Copy the whole folder to ~/.hermes/skills/research/network-pharmacology/
+#   (Windows: %LOCALAPPDATA%\hermes\skills\research\network-pharmacology)
+
+# 3. ADMET stage (optional): local ML for absorption/metabolism/toxicity
+uv pip install admet-ai        # ~1GB (torch); CPU inference is fine
+
+# 4. SwissTargetPrediction automation (optional but recommended):
+#   Install Chrome + browser-use, authorize remote debugging once
+uv tool install browser-use
+```
+
+**Input format** (see `examples/代谢物列表.csv`):
+```csv
+序号,VAR编号,ID,Metabolite
+1,VAR00001,neg_1001,Gallic Acid
+...
+```
+Only the `Metabolite` column is required. Keep `VAR`/`ID` if you have them.
+⚠️ CSV fields containing commas MUST be double-quoted (e.g. `"3,4-Dihydroxyphenylpyruvate"`).
+
+**File-name conventions** (scripts expect these files in the working dir):
+`代谢物列表.csv` (input) → `pubchem_smiles.json` → `类药性筛选结果.csv` → `step4_stp_full.csv` → `step6_intersections.csv` → `step7_ranking.csv` → `网络药理学完整报告.html`
+
+**Network note (China)**: g:Profiler / STRING / GitHub need a VPN proxy
+(`export HTTPS_PROXY=http://<proxy:port>`); unset it before hitting local/campus sites.
+
 ## 🚀 Quick start
 
 ```bash
