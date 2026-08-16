@@ -31,7 +31,7 @@ tr:hover td{background:rgba(139,92,246,.05)}
 
 <div class="hero">
 <h1>🧬 网络药理学完整报告 v2</h1>
-<p>138 代谢物全流程 · 结构→类药性→ADMET→靶点→交集→网络 · 抗氧化功效</p>
+<p>138 代谢物全流程 · 结构→类药性→ADMET→靶点→交集→网络 · __DISEASE_CN__功效</p>
 </div>
 
 <div class="funnel">
@@ -39,7 +39,7 @@ tr:hover td{background:rgba(139,92,246,.05)}
 <div class="step"><div class="num">130</div><div class="lbl">结构命中</div></div>
 <div class="step"><div class="num">__N_CAND__</div><div class="lbl">类药性候选</div></div>
 <div class="step"><div class="num">130</div><div class="lbl">STP 靶点</div></div>
-<div class="step"><div class="num">__N_ANTI__</div><div class="lbl">抗氧化基因</div></div>
+<div class="step"><div class="num">__N_ANTI__</div><div class="lbl">__DISEASE_CN__基因</div></div>
 <div class="step hot"><div class="num" style="color:#34d399">__N_COMP_HIT__</div><div class="lbl">交集成分</div></div>
 <div class="step hot"><div class="num" style="color:#34d399">__N_GENE_HIT__</div><div class="lbl">交集基因</div></div>
 </div>
@@ -47,15 +47,15 @@ tr:hover td{background:rgba(139,92,246,.05)}
 <h2>🕸️ 成分-靶点网络图（__N_NODES__ 节点 / __N_LINKS__ 连线）</h2>
 <div class="legend">
 <span><span class="dot" style="background:#8b5cf6"></span> 活性成分</span>
-<span><span class="dot" style="background:#34d399"></span> 抗氧化靶点</span>
+<span><span class="dot" style="background:#34d399"></span> __DISEASE_CN__靶点</span>
 <span><span class="dot" style="background:#fbbf24"></span> 核心靶点(度≥3)</span>
 </div>
 <div id="net"></div>
 
-<h2>🎯 交集抗氧化靶点 Top 20</h2>
+<h2>🎯 交集 __DISEASE_CN__靶点 Top 20</h2>
 <div class="section"><table><tr><th>#</th><th>基因</th><th>连接成分数</th><th>代表成分</th><th>GeneCards分</th></tr>__GENE_ROWS__</table></div>
 
-<h2>🏆 活性成分抗氧化潜力排行 Top 20</h2>
+<h2>🏆 活性成分 __DISEASE_CN__潜力排行 Top 20</h2>
 <div class="section"><table><tr><th>#</th><th>成分</th><th>靶点数</th><th>最高概率</th><th>生物利用度</th><th>综合评分</th></tr>__RANK_ROWS__</table></div>
 
 <h2>📊 GO/KEGG 通路富集（g:Profiler，78 交集基因）</h2>
@@ -72,7 +72,7 @@ tr:hover td{background:rgba(139,92,246,.05)}
 <h2>🔗 交集明细（Top 80）</h2>
 <div class="section"><table><tr><th>成分</th><th>基因</th><th>UniProt</th><th>概率</th><th>来源</th></tr>__INTER_ROWS__</table></div>
 
-<div class="footer">网络药理学完整报告 v2 · 138 代谢物全流程 · 抗氧化 · 2026-08</div>
+<div class="footer">网络药理学完整报告 v2 · 138 代谢物全流程 · __DISEASE_CN__ · 2026-08</div>
 </div>
 <script>
 const nodes=__NODES_JSON__;

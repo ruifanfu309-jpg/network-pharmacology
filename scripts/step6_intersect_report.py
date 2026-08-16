@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-网络药理学 v2 - 第6步: 交集分析 + 网络图数据 + 完整报告
-输入: step4_stp_predictions.csv + step5_antioxidant_genes.csv + step5b_genecards
-输出: step6_intersections.csv + step6_network.json + 03_报告/网络药理学完整报告.html
+Network pharmacology - Step 6: intersection + ranking + full HTML report (GENERIC disease)
+交集分析 + 网络图 + 完整报告（通用版——疾病方向由 step5 的输出文件决定）
+
+Usage:
+    python step6_intersect_report.py                      # default: antioxidant
+    python step6_intersect_report.py --disease anti_inflammatory \
+        --disease-cn "抗炎"                               # 任意方向
 """
-import csv, json, html
+import csv, json, html, argparse
 from pathlib import Path
 from collections import defaultdict
 
@@ -20,16 +24,21 @@ def esc(s):
     return html.escape(str(s or ""))
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--disease", default="antioxidant", help="disease direction (must match step5 --label)")
+    ap.add_argument("--disease-cn", default="抗氧化", help="Chinese label for the report")
+    args = ap.parse_args()
+
     stp = read_csv("step4_stp_full.csv")
-    go = read_csv("step5_antioxidant_genes.csv")
-    gc = []  # 方案A: 纯净版只用 GO 注释（不含 GeneCards 文本挖掘基因）
+    go = read_csv(f"step5_{args.disease}_genes.csv")
+    gc = []  # option A: GO-only pure set (no GeneCards text-mining)
     lip = read_csv("step2_lipinski.csv")
     admet = read_csv("step3_admet.csv")
 
     go_genes = set(r["gene"].upper() for r in go)
     gc_genes = {}
     all_anti = go_genes
-    print(f"抗氧化基因: GO={len(go_genes)} → {len(all_anti)}（纯净版，无 GeneCards）")
+    print(f"疾病基因: GO={len(go_genes)} → {len(all_anti)}（{args.disease}，纯净版）")
 
     inter = []
     for r in stp:
@@ -141,6 +150,7 @@ def main():
     tpl = (BASE / "02_脚本" / "report_template.html").read_text(encoding="utf-8")
     doc = tpl
     for key, val in {
+        "__DISEASE_CN__": args.disease_cn,
         "__N_CAND__": str(n_cand),
         "__N_ANTI__": str(len(all_anti)),
         "__N_COMP_HIT__": str(len(comps_hit)),

@@ -74,7 +74,7 @@ def main():
     # 图例
     legend = [
         mpatches.Patch(color="#8b5cf6", label="活性成分"),
-        mpatches.Patch(color="#34d399", label="抗氧化靶点"),
+        mpatches.Patch(color="#34d399", label="疾病靶点"),
         mpatches.Patch(color="#fbbf24", label=f"核心靶点(度≥3, n={len(core_genes)})"),
     ]
     ax.legend(handles=legend, loc="upper left", fontsize=11, framealpha=0.8,
