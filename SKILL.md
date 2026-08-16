@@ -226,7 +226,7 @@ Replaces manual gene-list curation — pull ALL reviewed human genes annotated t
 
 | Direction | GO terms (UniProt query) |
 |---|---|
-| 抗氧化 antioxidant | GO:0006979 response to oxidative stress, GO:0016209 antioxidant activity, GO:0045454 cell redox homeostasis, GO:0004601 peroxidase, GO:0004784 SOD, GO:0004602 GPX |
+| 抗氧化 antioxidant | **FULL (17 terms → 480 genes, verified 2026-08)**: 响应类 GO:0006979(356) GO:0034599(204) GO:0000302(147) GO:0034614(111) GO:0042542(80) GO:0006801(41) GO:0072593(79) GO:0042744(20); 活性类 GO:0016209(72) GO:0004601(45) GO:0004602(23) GO:0004784(4) GO:0004096(3) GO:0004791(7) GO:0016668(11); 稳态类 GO:0045454(41-47) GO:0006749(52). Core 6-term subset (404 genes) suffices for most work; full union adds catalase/thioredoxin/glutathione-metabolism members |
 | 抗炎 anti-inflammatory | GO:0006954 inflammatory response, GO:0002526 acute inflammatory response, GO:0070098 chemokine-mediated signaling |
 | 降糖 hypoglycemic | GO:0032868 response to insulin, GO:0042593 glucose homeostasis, GO:0006006 glucose metabolic process |
 | 护肝 hepatoprotective | GO:0009410 response to xenobiotic, GO:0045471 response to ethanol, GO:0032496 response to LPS |
